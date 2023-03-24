@@ -1,3 +1,12 @@
+mod server;
+mod client;
+
 fn main() {
-    println!("Hello, world!");
+    // Démarrer le serveur dans un thread séparé
+    std::thread::spawn(|| {
+        server::main().unwrap();
+    });
+
+    // Démarrer le client dans le thread principal
+    client::main().unwrap();
 }
